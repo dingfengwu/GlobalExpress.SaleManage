@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Leader";
+    //Layout = null;
+}
+
+<!--load datatables css-->
+<link href="~/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" />
+
+
+<table id="table_id_example" class="display">
+    <thead>
+        <tr>
+            <th>Leader Name</th>
+            <th>Leader Source</th>
+            <th>Verified Type</th>
+            <th>Create Date</th>
+            <th>Create Employee</th>
+        </tr>
+    </thead>
+    
+</table>
+
+
+<!--load datatables js and load data-->
+<script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //$.fn.dataTable.ext.errMode = 'throw';
+
+        $('#table_id_example').DataTable({
+            //"processing": true,
+            "serverSide": true,
+            "ajax": "/api/leader/leaderlist",
+            "columns": [
+            { "data": "Name" },
+            { "data": "SourceName" },
+            { "data": "VerifiedTypeName" },
+            { "data": "CreateDate" },
+            { "data": "CreateEmplName" }
+            ]
+        });
+    });
+</script>
